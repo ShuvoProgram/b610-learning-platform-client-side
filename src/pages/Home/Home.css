@@ -6,3 +6,13 @@
 .hero-bg{
     background-color: rgba(0, 0, 0, 0.555);
 }
+.second-cover{
+    background-image: url('../../assets/bg-second-Cover.jpg');
+    height: 100vh;
+    width: 100vw;
+}
+.second-bg-color{
+    display: grid;
+    grid-template-columns: 4fr 3fr;
+    background-color: rgba(0, 0, 0, 0.555);
+}
