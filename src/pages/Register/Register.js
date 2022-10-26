@@ -1,8 +1,6 @@
 import React, { useState } from "react";
 import { useContext } from "react";
 import { useForm, Controller } from "react-hook-form";
-import Footer from "../../component/Footer/Footer";
-import Header from "../../component/Header/Header";
 import { AuthenticContext } from "../../context/AuthContext";
 import swal from "sweetalert";
 

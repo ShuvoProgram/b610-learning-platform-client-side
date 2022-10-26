@@ -1,13 +1,15 @@
 import React from 'react';
 import { FaStarHalfAlt, FaStar } from "react-icons/fa";
+import { Link } from 'react-router-dom';
 import './CoursesCard.css';
 
 const CoursesCard = ({ course }) => {
-    const { Category, title, vote, rating, price } = course;
+    const {id, img, Category, title, vote, rating, price } = course;
+    console.log(id)
     return (
-        <>
+        <Link to={`/courses/${id}`}>
             <div className="courses-card relative border border-0 border-gray-100 rounded-md shadow-md dark:text-gray-900">
-                <img src="https://source.unsplash.com/random/300x300/?2" alt="" className="object-cover object-center w-full rounded-t-md h-40 dark:bg-gray-500" />
+                <img src={img} alt={title} className="object-cover object-center w-full rounded-t-md h-40 dark:bg-gray-500" />
                 <div className="flex flex-col justify-between p-4 space-y-2">
                     <div className="">
                         <p><small>{Category}</small></p>
@@ -34,7 +36,7 @@ const CoursesCard = ({ course }) => {
                     </div>
                 </div>
             </div>
-        </>
+        </Link>
     );
 };
 

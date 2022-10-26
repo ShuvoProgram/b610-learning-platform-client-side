@@ -1,8 +1,14 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../../assets/logo.png'
+import { AuthenticContext } from '../../context/AuthContext';
+import { FaUser } from 'react-icons/fa';
 
 const Header = () => {
+    const { user, logOut } = useContext(AuthenticContext)
+    const userSignOut = () => {
+        logOut()
+    }
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     return (
         <div class="bg-transparent">
@@ -46,14 +52,22 @@ const Header = () => {
                                 FAQ
                             </Link>
                         </li>
-                        <li>
-                            <Link
-                                to="/login"
-                                class="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-gray-900 transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:text-blue-800 border border-1 border-blue-800 focus:shadow-outline focus:outline-none"
-                                title="Login"
-                            >
-                                Log In
-                            </Link>
+                        <li className='flex items-center space-x-8'>
+                            {
+                                    user ? <>
+                                    {
+                                        user?.photoURL ? <img className='w-8 h-8 rounded-full ring-2 ring-offset-4 dark:bg-gray-500 ring-violet-400 ring-offset-gray-800 text-xs' src={user.photoURL} alt={user.displayName} /> : <FaUser />
+                                    }
+                                    <button className='' onClick={userSignOut}>Log Out</button>
+                                    </> : 
+                                    <Link
+                                        to="/login"
+                                        class="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-gray-900 transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:text-blue-800 border border-1 border-blue-800 focus:shadow-outline focus:outline-none"
+                                        title="Login"
+                                    >
+                                        Log In
+                                    </Link>
+                            }
                         </li>
                     </ul>
                     <div class="lg:hidden">
