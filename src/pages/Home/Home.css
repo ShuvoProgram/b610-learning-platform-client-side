@@ -16,3 +16,30 @@
     grid-template-columns: 4fr 3fr;
     background-color: rgba(0, 0, 0, 0.555);
 }
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+    .feature-card {
+        display: none;
+    }
+}
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+    .feature-card {
+            display: none;
+        }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+    .feature-card {
+            display: flex;
+        }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+    .feature-card {
+            display: flex;
+        }
+}

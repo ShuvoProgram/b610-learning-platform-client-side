@@ -12,7 +12,6 @@ const Home = () => {
             {/* Header and Banner */}
             <div className='hero-cover bg-cover'>
                 <div className='hero-bg text-white h-screen '>
-                    <Header />
                     {/* hero-section */}
                     <div className='flex flex-col'>
                         <div className='mx-auto mt-24'>
@@ -29,7 +28,7 @@ const Home = () => {
                                 typeSpeed={50}
                             />
                         </div>
-                        <div className='mt-44 flex mx-auto'>
+                        <div className='mt-44 flex mx-auto feature-card'>
                             <div className='flex justify-center items-center flex-col mr-10 h-48 w-48  bg-purple-500 rounded-lg'>
                                 <FaCamera className='h-10 w-20 mb-5' />
                                 <h1 className='font-semibold'>Photography</h1>
@@ -87,7 +86,6 @@ const Home = () => {
                     </div>
                 </div>
             </div>
-            <Footer/>
         </div>
         
     );

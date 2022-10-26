@@ -1,4 +1,29 @@
-.courses-container{
+
+.courseCard-Container{
+    display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+}
+.courses-container {
     display: grid;
     grid-template-columns: 1fr 5fr;
+}
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+    .courses-container {
+            display: flex;
+            flex-direction: column;
+        }
+                .courseCard-Container {
+                    display: grid;
+                    grid-template-columns: repeat(1, 1fr);
+                    gap: 20px;
+                }
+}
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+    .courses-container {
+        display: flex;
+    }
+        
 }
