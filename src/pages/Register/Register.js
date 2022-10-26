@@ -1,12 +1,16 @@
 import React, { useState } from "react";
 import { useContext } from "react";
-import { useForm, Controller } from "react-hook-form";
 import { AuthenticContext } from "../../context/AuthContext";
 import swal from "sweetalert";
+import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
+import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
 
 const Register = () => {
-  const { createUser, verifyEmail } = useContext(AuthenticContext);
-  const [error, setError] = useState({
+  const { createUser, verifyEmail, updateUserProfile } = useContext(AuthenticContext);
+  const [showPass, setShowPass] = useState(false);
+  const [error, setError] = useState("");
+  const [errors, setErrors] = useState({
     email: "",
     password: "",
   });
@@ -14,40 +18,67 @@ const Register = () => {
     email: "",
     password: "",
   });
-  const {
-    register,
-    handleSubmit,
-    watch,
-    formState: { errors },
-  } = useForm();
+  const navigate = useNavigate();
+  const onSubmit = event => {
+    event.preventDefault()
 
-  const onSubmit = (data) => {
-    console.log(data);
+    const form = event.target;
+    const email = form.email.value;
+    const password = form.password.value;
+    const name = form.name.value;
+    const photoURL = form.photoURL.value;
 
-    createUser(data.email, data.password)
+    createUser(email, password)
       .then((result) => {
         const user = result.user;
-        verifyEmail();
+        updateProfile(name, photoURL)
+        handleVerifyEmail()
         swal("Good job!", "Please Verify your Email!", "success", {
           button: "Check Mail",
         });
-        setError("");
-        data.reset();
+        setError('')
+        form.reset()
+        navigate('/login')
           setError({ ...error, email: "Please Provide Valid Email" });
           setUserInfo({ ...userInfo, email: "" });
         console.log(user);
       })
       .catch((err) => {
-        console.error(err);
-        setError(err);
-          setError({ ...error, email: "" });
-          setUserInfo({ ...userInfo, email: data.email })
+        toast.error(error)
+        setError(err.message)
       });
   };
 
+  const handleVerifyEmail = () => {
+    verifyEmail()
+      .then(() => { })
+      .catch(err => console.error(err))
+  }
+
+  const updateProfile = (name, photoURL) => {
+    const profile = {
+      name: name,
+      photoURL: photoURL,
+    }
+    updateUserProfile(profile)
+      .then(() => { })
+      .catch(err => console.error(err))
+  }
+
+  const handleEmailChange = e => {
+    const email = e.target.value;
+    if (!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
+      setErrors({ ...errors, email: "Please Provide Valid Email" });
+      setUserInfo({ ...userInfo, email: "" });
+
+    } else {
+      setErrors({ ...errors, email: "" });
+      setUserInfo({ ...userInfo, email: e.target.value })
+    }
+  }
+
   const handlePasswordChange = (e) => {
     const password = e.target.value;
-    console.log(password);
     if (password.length < 8) {
       setError({ ...errors, password: "Must be at least 8 characters" });
       setUserInfo({ ...userInfo, password: "" });
@@ -68,83 +99,57 @@ const Register = () => {
       setUserInfo({ ...userInfo, password: e.target.value });
     }
   };
-  //   console.log(watch("example")); // watch input value by passing the name of it
+
   return (
     <div>
       <div className="mx-56">
-        {/* "handleSubmit" will validate your inputs before invoking "onSubmit"  */}
         <div className="border border-2">
           <div className="flex justify-center my-3">
             <h1 className="text-2xl font-semibold">
               Register <span className="text-blue-800">Form</span>{" "}
             </h1>
           </div>
-          <form onSubmit={handleSubmit(onSubmit)} className="mx-10">
+          <form onSubmit={onSubmit} className="mx-10">
             <div className="grid grid-cols-1 gap-4">
               <div className="flex flex-col">
-                {/* register your input into the hook by invoking the "register" function */}
-                <label htmlFor="name">Name</label>
-                <input
-                  {...register("name", { required: true })}
-                  className="border border-1 px-2"
-                  placeholder="Enter Your Name"
-                />
-                {/* errors will return when field validation fails  */}
-                {errors.exampleRequired && <span>This field is required</span>}
+                <div className="col-span-full">
+                  <label htmlFor="name" className="text-sm">Name</label>
+                  <input id="name" name='name' type="text" placeholder="Name" className="w-full p-2 rounded-md outline outline-1 outline-black focus:ring focus:ring-opacity-75 focus:ring-violet-400 dark:border-gray-700 dark:text-gray-900" />
+                </div>
+                {errors.name && <span className="text-red-600">This field is required</span>}
               </div>
             </div>
             <div className="grid grid-cols-2 gap-4">
               <div className="flex flex-col">
-                {/* include validation with required or other standard HTML validation rules */}
-                <label htmlFor="email">Email</label>
-                <input
-                  {...register("email", { required: true })}
-                  className="border border-1 px-2"
-                  placeholder="Enter Your Email"
-                />
-                <>
-                  {/* errors will return when field validation fails  */}
-                  {error.email && <p className="text-red-600">{error.email}</p>}
-                  {errors.exampleRequired && (
-                    <span>This field is required</span>
-                  )}
-                </>
+                <div className="col-span-full sm:col-span-3">
+                  <label htmlFor="email" className="text-sm">Email</label>
+                  <input onChange={handleEmailChange} id="email" name='email' type="email" placeholder="example#123@gmail.com" className="w-full outline outline-1 outline-black p-2 rounded-md focus:ring focus:ring-opacity-75 focus:ring-violet-400 dark:border-gray-700 dark:text-gray-900" data-temp-mail-org="0" />
+                  <>{
+                    errors.email && <p className='text-red-600'>{errors.email}</p>
+                  }
+                  </>
+                </div>
               </div>
               <div className="flex flex-col">
-                {/* include validation with required or other standard HTML validation rules */}
-                <label htmlFor="password">Password</label>
-                <input
-                  onChange={handlePasswordChange}
-                  name="password"
-                  {...register("password", { required: true })}
-                  className="border border-1 px-2"
-                  placeholder="Enter Your Password"
-                />
-                {/* errors will return when field validation fails  */}
-                {error.password && (
-                  <p className="text-red-600">{error.password}</p>
-                )}
-                {errors.exampleRequired && <span>This field is required</span>}
+                <div className="relative">
+                  <label htmlFor="pasword" className="text-sm">Password</label>
+                  <input onChange={handlePasswordChange} id="password" name='password' type={showPass ? 'text' : "password"} placeholder="Password" className="w-full rounded-md outline outline-1 outline-black focus:ring focus:ring-opacity-75 focus:ring-violet-400 dark:border-gray-700 dark:text-gray-900" />
+                  <div className="absolute right-1 top-8" onClick={() => setShowPass(!showPass)}>
+                    {showPass ? <AiFillEyeInvisible className='h-6 w-6' /> : <AiFillEye className='h-6 w-6' />}
+                  </div>
+                  <>
+                    {errors.password && <p className='text-red-600'>{errors.password}</p>}
+                  </>
+                </div>
               </div>
+              
             </div>
-            <div className="grid grid-cols-3 gap-3">
+            <div className="grid grid-cols-1 gap-4">
               <div className="flex flex-col">
-                <label htmlFor="gender">Gender</label>
-                <select
-                  {...register("gender")}
-                  className="border border-1 px-2">
-                  <option value="female">female</option>
-                  <option value="male">male</option>
-                  <option value="other">other</option>
-                </select>
-              </div>
-              <div className="flex flex-col">
-                <label htmlFor="age">Age</label>
-                <input
-                  type="number"
-                  {...register("age", { min: 18, max: 99 })}
-                  className="border border-1 px-2"
-                />
+                <div className="col-span-full">
+                  <label htmlFor="photoURL" className="text-sm">PhotoURL</label>
+                  <input id="photoURL" name='photoURL' type="text" placeholder="photoURL" className="w-full p-2 rounded-md outline outline-1 outline-black focus:ring focus:ring-opacity-75 focus:ring-violet-400 dark:border-gray-700 dark:text-gray-900" />
+                </div>
               </div>
             </div>
             <div className="flex justify-center my-3">

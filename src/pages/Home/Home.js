@@ -1,10 +1,9 @@
 import React from 'react';
-import Header from '../../component/Header/Header';
 import TypeWriterEffect from 'react-typewriter-effect';
 import './Home.css';
 import { FaCamera } from "react-icons/fa";
 import TopRated from '../Courses/TopRated';
-import Footer from '../../component/Footer/Footer';
+import { CButton, CCard, CCardBody, CCardText, CCardTitle, CCarousel, CCarouselItem, CImage } from '@coreui/react';
 
 const Home = () => {
     return (
@@ -45,6 +44,17 @@ const Home = () => {
                                 <FaCamera className='h-10 w-10 mb-5' />
                                 <h1 className='font-semibold'>Photography</h1>
                             </div>
+                        </div>
+                        <div className='feature-out mt-32 flex justify-center mx-5'>
+                            <CCard>
+                                <CCardBody>
+                                    <CCardTitle>Special title treatment</CCardTitle>
+                                    <CCardText>
+                                        With supporting text below as a natural lead-in to additional content.
+                                    </CCardText>
+                                    <CButton href="#">Go somewhere</CButton>
+                                </CCardBody>
+                            </CCard>
                         </div>
                     </div>
                 </div>

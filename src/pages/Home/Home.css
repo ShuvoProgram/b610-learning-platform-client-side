@@ -16,17 +16,35 @@
     grid-template-columns: 4fr 3fr;
     background-color: rgba(0, 0, 0, 0.555);
 }
+.feature-out{
+    display: none;
+}
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 600px) {
     .feature-card {
         display: none;
     }
+        .feature-out {
+            display: block;
+        }
+                .second-bg-color{
+                    display: flex;
+                    flex-direction: column;
+                }
 }
 /* Extra small devices (phones, 600px and down) */
 @media only screen and (max-width: 600px) {
     .feature-card {
             display: none;
+        }
+                .feature-out {
+                    display: block;
+                }
+        .second-bg-color {
+            padding-top: 40px;
+            display: flex;
+            flex-direction: column;
         }
 }
 
@@ -34,6 +52,9 @@
 @media only screen and (min-width: 992px) {
     .feature-card {
             display: flex;
+        }
+        .feature-out {
+            display: none;
         }
 }
 

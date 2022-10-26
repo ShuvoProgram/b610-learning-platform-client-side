@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import logo from '../../assets/logo.png'
 import { AuthenticContext } from '../../context/AuthContext';
 import { FaUser } from 'react-icons/fa';
+import { Button, Tooltip } from 'flowbite-react';
 
 const Header = () => {
     const { user, logOut } = useContext(AuthenticContext)
@@ -56,7 +57,12 @@ const Header = () => {
                             {
                                     user ? <>
                                     {
-                                        user?.photoURL ? <img className='w-8 h-8 rounded-full ring-2 ring-offset-4 dark:bg-gray-500 ring-violet-400 ring-offset-gray-800 text-xs' src={user.photoURL} alt={user.displayName} /> : <FaUser />
+                                        user?.photoURL ?
+                                        <Tooltip content={user.displayName}>
+                                                <img className='w-8 h-8 rounded-full ring-2 ring-offset-4 dark:bg-gray-500 ring-violet-400 ring-offset-gray-800 text-xs' src={user.photoURL} alt={user.displayName} />
+                                        </Tooltip>
+                                          : <FaUser />
+                                        
                                     }
                                     <button className='' onClick={userSignOut}>Log Out</button>
                                     </> : 
