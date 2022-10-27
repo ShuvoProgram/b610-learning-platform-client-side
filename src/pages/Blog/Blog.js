@@ -1,6 +1,4 @@
-import { Accordion } from "flowbite-react";
 import React from "react";
-
 
 const Blog = () => {
   return (

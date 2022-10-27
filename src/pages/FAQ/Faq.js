@@ -7,112 +7,47 @@ const Faq = () => {
             <Accordion alwaysOpen={true}>
                 <Accordion.Panel>
                     <Accordion.Title>
-                        
+                        What if I don’t like a course I purchased?
                     </Accordion.Title>
                     <Accordion.Content>
                         <p className="mb-2 text-gray-500 dark:text-gray-400">
-                            Flowbite is an open-source library of interactive components built on top of Tailwind CSS including buttons, dropdowns, modals, navbars, and more.
-                        </p>
-                        <p className="text-gray-500 dark:text-gray-400">
-                            Check out this guide to learn how to{' '}
-                            <a
-                                href="https://flowbite.com/docs/getting-started/introduction/"
-                                className="text-blue-600 hover:underline dark:text-blue-500"
-                            >
-                                get started
-                            </a>
-                            {' '}and start developing websites even faster with components on top of Tailwind CSS.
+                            We want you to be satisfied, so all eligible courses purchased on Udemy can be refunded within 30 days. If you are unhappy with a course, you can request a refund, provided the request meets the guidelines in our refund policy. 
                         </p>
                     </Accordion.Content>
                 </Accordion.Panel>
                 <Accordion.Panel>
                     <Accordion.Title>
-                        
+                        Where can I go for help?
                     </Accordion.Title>
                     <Accordion.Content>
                         <p className="mb-2 text-gray-500 dark:text-gray-400">
-                            Flowbite is first conceptualized and designed using the Figma software so everything you see in the library has a design equivalent in our Figma file.
-                        </p>
-                        <p className="text-gray-500 dark:text-gray-400">
-                            Check out the{' '}
-                            <a
-                                href="https://flowbite.com/figma/"
-                                className="text-blue-600 hover:underline dark:text-blue-500"
-                            >
-                                Figma design system
-                            </a>
-                            {' '}based on the utility classes from Tailwind CSS and components from Flowbite.
+                            If you find you have a question about a paid course while you’re taking it, you can search for answers to your question in the Q&A or ask the instructor.
+
+                            Our Help Center has extensive information regarding Udemy’s various features, and articles with troubleshooting steps to help you quickly resolve any issues you encounter. Our support team is also happy to help. 
                         </p>
                     </Accordion.Content>
                 </Accordion.Panel>
                 <Accordion.Panel>
                     <Accordion.Title>
-                        
+                        Is there any way to preview a course?
                     </Accordion.Title>
                     <Accordion.Content>
                         <p className="mb-2 text-gray-500 dark:text-gray-400">
-                            The main difference is that the core components from Flowbite are open source under the MIT license, whereas Tailwind UI is a paid product. Another difference is that Flowbite relies on smaller and standalone components, whereas Tailwind UI offers sections of pages.
+                            Yes! Learn how to preview a course, and review key information about it. This article outlines how you can search Udemy’s ever-growing library, and find courses you’re interested in taking.
                         </p>
-                        <p className="mb-2 text-gray-500 dark:text-gray-400">
-                            However, we actually recommend using both Flowbite, Flowbite Pro, and even Tailwind UI as there is no technical reason stopping you from using the best of two worlds.
-                        </p>
-                        <p className="mb-2 text-gray-500 dark:text-gray-400">
-                            Learn more about these technologies:
-                        </p>
-                        <ul className="list-disc pl-5 text-gray-500 dark:text-gray-400">
-                            <li>
-                                <a
-                                    href="https://flowbite.com/pro/"
-                                    className="text-blue-600 hover:underline dark:text-blue-500"
-                                >
-                                    Flowbite Pro
-                                </a>
-                            </li>
-                            <li>
-                                <a
-                                    href="https://tailwindui.com/"
-                                    rel="nofollow"
-                                    className="text-blue-600 hover:underline dark:text-blue-500"
-                                >
-                                    Tailwind UI
-                                </a>
-                            </li>
-                        </ul>
                     </Accordion.Content>
                 </Accordion.Panel>
                 <Accordion.Panel>
                     <Accordion.Title>
-                        
+                        How do I take a ProForce course?
                     </Accordion.Title>
                     <Accordion.Content>
                         <p className="mb-2 text-gray-500 dark:text-gray-400">
-                            The main difference is that the core components from Flowbite are open source under the MIT license, whereas Tailwind UI is a paid product. Another difference is that Flowbite relies on smaller and standalone components, whereas Tailwind UI offers sections of pages.
+                             ProForce are entirely on-demand and they can be accessed from several different devices and platforms, including a desktop, laptop, and our mobile app.
+
+                            After you enroll in a course, you can access it by clicking on the course link you will receive in your confirmation email (provided you’re logged into your ProForce account). You can also begin the course by logging in and navigating to your My learning page. 
                         </p>
-                        <p className="mb-2 text-gray-500 dark:text-gray-400">
-                            However, we actually recommend using both Flowbite, Flowbite Pro, and even Tailwind UI as there is no technical reason stopping you from using the best of two worlds.
-                        </p>
-                        <p className="mb-2 text-gray-500 dark:text-gray-400">
-                            Learn more about these technologies:
-                        </p>
-                        <ul className="list-disc pl-5 text-gray-500 dark:text-gray-400">
-                            <li>
-                                <a
-                                    href="https://flowbite.com/pro/"
-                                    className="text-blue-600 hover:underline dark:text-blue-500"
-                                >
-                                    Flowbite Pro
-                                </a>
-                            </li>
-                            <li>
-                                <a
-                                    href="https://tailwindui.com/"
-                                    rel="nofollow"
-                                    className="text-blue-600 hover:underline dark:text-blue-500"
-                                >
-                                    Tailwind UI
-                                </a>
-                            </li>
-                        </ul>
+                        
                     </Accordion.Content>
                 </Accordion.Panel>
             </Accordion>

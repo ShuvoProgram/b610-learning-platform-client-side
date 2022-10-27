@@ -3,7 +3,6 @@ import { useRef } from 'react';
 import { FaStarHalfAlt, FaStar, FaCloudDownloadAlt } from "react-icons/fa";
 import { Link, useLoaderData } from 'react-router-dom';
 import { useReactToPrint } from 'react-to-print';
-import toast from 'react-hot-toast';
 import swal from "sweetalert";
 import './CoursesDetails.css';
 

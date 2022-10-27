@@ -1,9 +1,7 @@
 import React from 'react';
 import TypeWriterEffect from 'react-typewriter-effect';
 import './Home.css';
-import { FaCamera } from "react-icons/fa";
 import TopRated from '../Courses/TopRated';
-import { CButton, CCard, CCardBody, CCardText, CCardTitle, CCarousel, CCarouselItem, CImage } from '@coreui/react';
 import { Link } from 'react-router-dom';
 
 const Home = () => {

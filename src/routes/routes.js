@@ -29,7 +29,7 @@ export const router = createBrowserRouter([
                element: <CoursesCard />,
                loader: ({ params }) =>
                    fetch(`http://localhost:5000/categories/${params.Category_id}`),
-             },
+             }
         ]
       },
       {
@@ -58,7 +58,3 @@ export const router = createBrowserRouter([
   },
 ]);
 
-// http://localhost:5000/courses/1
-// http://localhost:5000/courses/${id}
-// http://localhost:5000/categories/1
-// http://localhost:5000/categories/${Category_id}
