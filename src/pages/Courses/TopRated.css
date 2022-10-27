@@ -1,6 +1,7 @@
 .top-rated-container{
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
 }
 
 /* Extra small devices (phones, 600px and down) */
@@ -12,10 +13,10 @@
 }
 
 /* Small devices (portrait tablets and large phones, 600px and up) */
-@media only screen and (min-width: 600px) {
+/* @media only screen and (min-width: 600px) {
     .top-rated-container {
             display: grid;
             grid-template-columns: repeat(1, 1fr);
         }
 
-}
+} */

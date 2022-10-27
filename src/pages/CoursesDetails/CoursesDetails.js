@@ -46,15 +46,7 @@ const CoursesDetails = () => {
             </div>
             <div>
                 <div className="flex flex-col max-w-md p-6 space-y-2 border border-2 divide-y sm:w-96 sm:p-10 divide-gray-700 dark:bg-white dark:text-gray-900">
-                    <h2 className="text-2xl font-semibold">Course CheckOut</h2>
-                    <ul className="flex flex-col pt-4 space-y-2">
-                        <li className="flex items-start justify-between">
-                            <h3>Large soda</h3>
-                            <div className="text-right">
-                                <span className="block">$4.00</span>
-                            </div>
-                        </li>
-                    </ul>
+                    <h2 className="text-2xl font-semibold">Get Course Premium Info</h2>
                     <div className="pt-4 space-y-2">
                         <div className="space-y-6">
                             <div className="flex justify-between">
@@ -63,7 +55,7 @@ const CoursesDetails = () => {
                             </div>
                             <button type="button" className="w-full py-2 font-semibold border rounded dark:bg-blue-700 dark:text-gray-900 dark:border-violet-400">
                                 <Link to='/checkout'>
-                                    Go to checkout
+                                    Get Premium Access
                                 </Link>
                                 
                                 </button>

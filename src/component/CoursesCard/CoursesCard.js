@@ -6,7 +6,6 @@ import Single from './Single';
 const CoursesCard = () => {
     const courseData = useLoaderData()
     return (
-        
         <div className='courseCard-Container'>
             {
                 courseData.map(s => <Single

@@ -25,6 +25,7 @@ const Login = () => {
     })
     const navigate = useNavigate();
     const location = useLocation();
+    const from = location.state?.from?.pathname || "/";
 
     const googleProvider = new GoogleAuthProvider()
     const githubProvider = new GithubAuthProvider()
@@ -35,7 +36,6 @@ const Login = () => {
             const user = result.user;
             console.log(user);
             setLoading(false)
-            navigate(location.state.from.pathname);
         })
         .catch(err => console.error(err))
     }
@@ -46,7 +46,6 @@ const Login = () => {
             const user = result.user;
             verifyEmail()
             console.log(user)
-            navigate(location?.state?.from?.pathname);
         })
         .catch(err => console.error(err))
     }
@@ -64,7 +63,7 @@ const Login = () => {
             console.log(user)
             setLoading(false)
             if(user.emailVerified){
-                navigate(location?.state?.from?.pathname)
+                navigate(from, { replace: true });
             } else {
                 swal("Success!", "Your email is not verified. Please verify your email address.", "warning")
             }
@@ -102,10 +101,10 @@ const Login = () => {
     }
 
     useEffect(() => {
-        if (user && loading) {
-            navigate('/');
+        if (user) {
+            navigate(from, { replace: true });
         }
-    }, [user, location, loading])
+    }, [user, navigate, from])
     return (
         <>
             <div className='login-container flex justify-center'>
