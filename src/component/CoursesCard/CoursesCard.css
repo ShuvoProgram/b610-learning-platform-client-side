@@ -2,3 +2,8 @@
    height: 350px;
    width: 330px;
 }
+.courseCard-Container {
+   display: grid;
+   grid-template-columns: repeat(3, 1fr);
+   gap: 20px;
+}

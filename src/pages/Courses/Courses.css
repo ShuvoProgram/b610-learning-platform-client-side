@@ -1,9 +1,3 @@
-
-.courseCard-Container{
-    display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 20px;
-}
 .courses-container {
     display: grid;
     grid-template-columns: 1fr 5fr;
@@ -22,8 +16,8 @@
 }
 /* Small devices (portrait tablets and large phones, 600px and up) */
 @media only screen and (min-width: 600px) {
-    .courses-container {
+    /* .courses-container {
         display: flex;
-    }
+    } */
         
 }

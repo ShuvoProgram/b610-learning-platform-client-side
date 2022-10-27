@@ -10,7 +10,7 @@ import { getAuth, GithubAuthProvider, GoogleAuthProvider, sendPasswordResetEmail
 import app from '../../firebase/Firebase';
 import { useEffect } from 'react';
 import swal from "sweetalert";
-import { Button, Checkbox, Label, TextInput } from 'flowbite-react';
+import { Button,  Label, TextInput } from 'flowbite-react';
 
 
 const auth = getAuth(app)
@@ -23,12 +23,6 @@ const Login = () => {
         email: "",
         password: ""
     })
-
-    const [userInfo, setUserInfo] = useState({
-        email: "",
-        password: ""
-    })
-
     const navigate = useNavigate();
     const location = useLocation();
 
@@ -66,12 +60,14 @@ const Login = () => {
         signIn(email, password)
         .then(result => {
             const user = result.user;
+            console.log(user)
             setLoading(false)
             if(user.emailVerified){
                 navigate(location?.state?.from?.pathname)
             } else {
                 swal("Success!", "Your email is not verified. Please verify your email address.", "warning")
             }
+            form.reset()
             setErrors({...errors, password: "", email: ""})
         })
         .catch(err => {
@@ -87,14 +83,20 @@ const Login = () => {
             }
         })
     }
+    const handleUserEmailBlur = event => {
+        const email = event.target.value;
+        setErrors(email)
+    }
 
     const handleForgetPassword = event => {
-        event.preventDefault()
-        const form = event.target;
-        const email = form.email.value;
-        console.log(email);
-        sendPasswordResetEmail(auth, email)
-        .then(() => { })
+        if (!errors.email) {
+            alert('Please enter your email address.')
+            return;
+        }
+        sendPasswordResetEmail(auth, errors.email)
+        .then(() => { 
+            alert('Password Reset email sent. Please check your email.')
+         })
         .catch(err => console.error(err))
     }
 
@@ -117,6 +119,7 @@ const Login = () => {
                             </div>
                             <TextInput
                                 id="email"
+                                onBlur={handleUserEmailBlur}
                                 type="email"
                                 name="email"
                                 placeholder="name@gmail.com"

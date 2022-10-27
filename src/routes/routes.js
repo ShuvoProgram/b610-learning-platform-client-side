@@ -4,6 +4,7 @@ import Blog from "../pages/Blog/Blog";
 import Courses from "../pages/Courses/Courses";
 import CoursesDetails from "../pages/CoursesDetails/CoursesDetails";
 import Error from "../pages/Error/Error";
+import Faq from "../pages/FAQ/Faq";
 import Home from "../pages/Home/Home";
 import Main from "../pages/Layout/Main";
 import Login from "../pages/Login/Login";
@@ -17,12 +18,12 @@ export const router = createBrowserRouter([
     children: [
       { path: "/", element: <Home /> },
       {
-        path: "/courses",
+        path: "/categories",
         element: <Courses />,
         loader: () => fetch(`http://localhost:5000/categories/`),
          children: [
              {
-               path: "/courses/:Category_id",
+               path: "/categories/:Category_id",
                element: <CoursesCard />,
                loader: ({ params }) =>
                    fetch(`http://localhost:5000/categories/${params.Category_id}`),
@@ -44,6 +45,9 @@ export const router = createBrowserRouter([
     },
     {
         path: '/register', element: <Register/>
+    },
+    {
+        path: '/faq', element: <Faq/>
     }
 ],
   },

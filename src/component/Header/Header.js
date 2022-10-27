@@ -1,9 +1,9 @@
 import React, { useContext, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import logo from '../../assets/logo.png'
 import { AuthenticContext } from '../../context/AuthContext';
 import { FaUser } from 'react-icons/fa';
-import { Button, Tooltip } from 'flowbite-react';
+import { DarkThemeToggle, Flowbite, Tooltip, useTheme, useThemeMode } from 'flowbite-react';
 
 const Header = () => {
     const { user, logOut } = useContext(AuthenticContext)
@@ -11,10 +11,13 @@ const Header = () => {
         logOut()
     }
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const theme = useTheme().theme.button;
+    const [mode, setMode, toggleMode] = useThemeMode();
     return (
         <div class="bg-transparent">
             <div class="px-4 py-5 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8">
                 <div class="relative flex items-center justify-between ">
+                    {/* <NavLink onClick={toggleClass} className={({ isActive }) => isActive ? "active" : ""} to="/hotels">Hotels</NavLink> */}
                     <Link
                         to="/"
                         title="ProForce"
@@ -26,32 +29,33 @@ const Header = () => {
                         </span>
                     </Link>
                     <ul class="flex items-center hidden space-x-8 lg:flex">
-                        <li>
-                            <Link
-                                to="/courses"
+                        <li className='font-medium tracking-wide text-gray-900 transition-colors duration-200 hover:text-blue-800'>
+                            <NavLink
+                                to="/categories"
                                 title="Courses"
                                 class="font-medium tracking-wide text-gray-900 transition-colors duration-200 hover:text-blue-800"
+                                className={({ isActive }) => isActive ? "text-blue-800" : "font-medium tracking-wide text-gray-900 transition-colors duration-200 hover:text-blue-800"}
                             >
                                 Courses
-                            </Link>
+                            </NavLink>
                         </li>
-                        <li>
-                            <Link
+                        <li className='font-medium tracking-wide text-gray-900 transition-colors duration-200 hover:text-blue-800'>
+                            <NavLink
+                                className={({ isActive }) => isActive ? "text-blue-800" : "font-medium tracking-wide text-gray-900 transition-colors duration-200 hover:text-blue-800"}
                                 to="/blog"
                                 title="Blog"
-                                class="font-medium tracking-wide text-gray-900 transition-colors duration-200 hover:text-blue-800"
                             >
                                 Blog
-                            </Link>
+                            </NavLink>
                         </li>
-                        <li>
-                            <Link
+                        <li className='font-medium tracking-wide text-gray-900 transition-colors duration-200 hover:text-blue-800'>
+                            <NavLink
                                 to="/faq"
                                 title="FAQ"
-                                class="font-medium tracking-wide text-gray-900 transition-colors duration-200 hover:text-blue-800"
+                                className={({ isActive }) => isActive ? "text-blue-800" : "font-medium tracking-wide text-gray-900 transition-colors duration-200 hover:text-blue-800"}
                             >
                                 FAQ
-                            </Link>
+                            </NavLink>
                         </li>
                         <li className='flex items-center space-x-8'>
                             {
@@ -66,14 +70,22 @@ const Header = () => {
                                     }
                                     <button className='' onClick={userSignOut}>Log Out</button>
                                     </> : 
-                                    <Link
-                                        to="/login"
-                                        class="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-gray-900 transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:text-blue-800 border border-1 border-blue-800 focus:shadow-outline focus:outline-none"
-                                        title="Login"
-                                    >
-                                        Log In
-                                    </Link>
+                                    <li className='inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-gray-900 transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:text-blue-800 border border-1 border-blue-800 focus:shadow-outline focus:outline-none'>
+                                        <NavLink
+                                            to="/login"
+                                            title="Login"
+                                            className={({ isActive }) => isActive ? "text-blue-800" : "font-medium tracking-wide text-gray-900 transition-colors duration-200 hover:text-blue-800"}
+                                        >
+                                            Log In
+                                        </NavLink>
+                                    </li>
+                                    
                             }
+                        </li>
+                        <li>
+                            <Flowbite>
+                                <DarkThemeToggle />
+                            </Flowbite>
                         </li>
                     </ul>
                     <div class="lg:hidden">
@@ -133,45 +145,66 @@ const Header = () => {
                                     </div>
                                     <nav>
                                         <ul class="space-y-4">
-                                            <li>
-                                                <Link
-                                                    href="/"
+                                            <li className='font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400'>
+                                                <NavLink
+                                                    to="/courses"
                                                     aria-label="Our product"
                                                     title="Our product"
-                                                    class="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
+                                                    className={({ isActive }) => isActive ? "text-blue-800" : "font-medium tracking-wide text-gray-900 transition-colors duration-200 hover:text-blue-800"}
                                                 >
                                                     Courses
-                                                </Link>
+                                                </NavLink>
                                             </li>
-                                            <li>
-                                                <Link
-                                                    href="/"
+                                            <li className='font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400'>
+                                                <NavLink
+                                                    to="/blog"
                                                     aria-label="Our product"
                                                     title="Our product"
-                                                    class="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
+                                                    className={({ isActive }) => isActive ? "text-blue-800" : "font-medium tracking-wide text-gray-900 transition-colors duration-200 hover:text-blue-800"}
                                                 >
                                                     Blog
-                                                </Link>
+                                                </NavLink>
                                             </li>
-                                            <li>
-                                                <Link
-                                                    href="/"
+                                            <li className='font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400'>
+                                                <NavLink
+                                                    to="/faq"
                                                     aria-label="Product pricing"
                                                     title="Product pricing"
-                                                    class="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
+                                                    className={({ isActive }) => isActive ? "text-blue-800" : "font-medium tracking-wide text-gray-900 transition-colors duration-200 hover:text-blue-800"}
                                                 >
                                                     FQA
-                                                </Link>
+                                                </NavLink>
                                             </li>
                                             <li>
-                                                <Link
-                                                    href="/"
-                                                    aria-label="About us"
-                                                    title="About us"
-                                                    class="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
-                                                >
-                                                    Log In
-                                                </Link>
+                                                {
+                                                    user ? <>
+                                                        {
+                                                            user?.photoURL ?
+                                                                <Tooltip content={user.displayName}>
+                                                                    <img className='w-8 h-8 rounded-full ring-2 ring-offset-4 dark:bg-gray-500 ring-violet-400 ring-offset-gray-800 text-xs' src={user.photoURL} alt={user.displayName} />
+                                                                </Tooltip>
+                                                                : <FaUser />
+
+                                                        }
+                                                        <button className='' onClick={userSignOut}>Log Out</button>
+                                                    </> :
+                                                        <li className='inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-gray-900 transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:text-blue-800 border border-1 border-blue-800 focus:shadow-outline focus:outline-none'>
+                                                            <NavLink
+                                                                to="/login"
+                                                                className={({ isActive }) => isActive ? "text-blue-800" : "font-medium tracking-wide text-gray-900 transition-colors duration-200 hover:text-blue-800"}
+                                                                title="Login"
+                                                            >
+                                                                Log In
+                                                            </NavLink>
+                                                        </li>
+                                                }
+                                            </li>
+                                            <li>
+                                                <li>
+                                                    <Flowbite>
+                                                        <DarkThemeToggle />
+                                                    </Flowbite>
+                                                </li>
                                             </li>
                                         </ul>
                                     </nav>
