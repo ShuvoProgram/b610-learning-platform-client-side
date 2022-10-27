@@ -34,7 +34,8 @@ const Login = () => {
         .then(result => {
             const user = result.user;
             console.log(user);
-            navigate(location?.state?.from?.pathname);
+            setLoading(false)
+            navigate(location.state.from.pathname);
         })
         .catch(err => console.error(err))
     }
@@ -88,7 +89,7 @@ const Login = () => {
         setErrors(email)
     }
 
-    const handleForgetPassword = event => {
+    const handleForgetPassword = () => {
         if (!errors.email) {
             alert('Please enter your email address.')
             return;
@@ -101,10 +102,10 @@ const Login = () => {
     }
 
     useEffect(() => {
-        if(user && loading){
-            navigate('/')
+        if (user && loading) {
+            navigate('/');
         }
-    }, [user, loading, location])
+    }, [user, location, loading])
     return (
         <>
             <div className='login-container flex justify-center'>

@@ -1,7 +1,7 @@
 import React from 'react';
 import { useRef } from 'react';
 import { FaStarHalfAlt, FaStar, FaCloudDownloadAlt } from "react-icons/fa";
-import { useLoaderData } from 'react-router-dom';
+import { Link, useLoaderData } from 'react-router-dom';
 import { useReactToPrint } from 'react-to-print';
 import toast from 'react-hot-toast';
 import swal from "sweetalert";
@@ -61,7 +61,12 @@ const CoursesDetails = () => {
                                 <span>Course Fee</span>
                                 <span className="font-semibold">${price}</span>
                             </div>
-                            <button type="button" className="w-full py-2 font-semibold border rounded dark:bg-blue-700 dark:text-gray-900 dark:border-violet-400">Go to checkout</button>
+                            <button type="button" className="w-full py-2 font-semibold border rounded dark:bg-blue-700 dark:text-gray-900 dark:border-violet-400">
+                                <Link to='/checkout'>
+                                    Go to checkout
+                                </Link>
+                                
+                                </button>
                         </div>
                     </div>
                 </div>
