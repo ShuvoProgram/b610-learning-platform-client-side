@@ -1,19 +1,15 @@
-import React from 'react';
-import { Outlet } from 'react-router-dom';
-import Footer from '../../component/Footer/Footer';
-import Header from '../../component/Header/Header';
-import LoadContext from '../../context/LoadContext';
-
+import React from "react";
+import { Outlet } from "react-router-dom";
+import Footer from "../../component/Footer/Footer";
+import Header from "../../component/Header/Header";
 const Main = () => {
-    return (
-        <div>
-            <LoadContext>
-                <Header/>
-                <Outlet />
-                <Footer></Footer>
-            </LoadContext>
-        </div>
-    );
+  return (
+    <div>
+      <Header />
+      <Outlet />
+      <Footer></Footer>
+    </div>
+  );
 };
 
 export default Main;

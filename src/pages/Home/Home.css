@@ -1,58 +1,5 @@
 .hero-cover{
-    background-image: url('../../assets/Bg-Hero-Cover.jpg');
+    background-image: url('https://i.ibb.co/9NJ5m1y/Bg-Hero-Cover.jpg');
     height: 100vh;
     width: 100vw;
-}
-.hero-bg{
-    background-color: rgba(0, 0, 0, 0.555);
-}
-.second-cover{
-    background-image: url('../../assets/bg-second-Cover.jpg');
-    height: 100vh;
-    width: 100vw;
-}
-/* .second-bg-color{
-    display: grid;
-    grid-template-columns: 4fr 3fr;
-    background-color: rgba(0, 0, 0, 0.555);
-} */
-/* .feature-out{
-    display: none;
-} */
-
-/* Small devices (portrait tablets and large phones, 600px and up) */
-@media only screen and (min-width: 600px) {
-    .feature-card {
-        display: none;
-    }
-        .feature-out {
-            display: block;
-        }
-}
-/* Extra small devices (phones, 600px and down) */
-@media only screen and (max-width: 600px) {
-    .feature-card {
-            display: none;
-        }
-                .feature-out {
-                    display: block;
-                }
-
-
-/* Large devices (laptops/desktops, 992px and up) */
-@media only screen and (min-width: 992px) {
-    .feature-card {
-            display: flex;
-        }
-        .feature-out {
-            display: none;
-        }
-}
-
-/* Extra large devices (large laptops and desktops, 1200px and up) */
-@media only screen and (min-width: 1200px) {
-    .feature-card {
-            display: flex;
-        }
-}
 }

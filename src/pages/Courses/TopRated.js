@@ -3,7 +3,7 @@ import { FaStarHalfAlt, FaStar } from "react-icons/fa";
 
 const TopRated = () => {
     return (
-        <div>
+        <div className='top-rated-container'>
             <div className="max-w-xs border border-0 border-gray-100 rounded-md shadow-md dark:bg-white dark:text-gray-900">
                 <img src="https://source.unsplash.com/random/300x300/?2" alt="" className="object-cover object-center w-full rounded-t-md h-52 dark:bg-gray-500" />
                 <div className="flex flex-col justify-between p-6 space-y-6">
